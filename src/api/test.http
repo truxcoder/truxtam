@@ -1,0 +1,27 @@
+POST http://localhost:3000/user/login HTTP/1.1
+content-type: application/json
+
+{
+    "username":"admin"
+}
+
+###
+
+POST http://localhost:3000/asset/add HTTP/1.1
+content-type: application/json
+
+{
+  "code": "GD20201102",
+  "name": "交换机",
+  "mfrs": "华为",
+  "model": "HSW-2202",
+  "buy_time": "2008-08-08",
+  "use_time": "2008-08-08",
+  "status": "正常",
+  "department": "办公室",
+  "position": "信息中心主任办公室",
+  "manager": "李晓波"
+}
+
+###
+GET http://localhost:3000/asset/test?id=04bed6fe-039f-4ca8-9e13-702ec6cee29d HTTP/1.1
