@@ -96,6 +96,27 @@ export const constantRoutes = [
       }
     ]
   },
+  {
+    path: '/system',
+    component: Layout,
+    redirect: '/system/user',
+    name: 'System',
+    meta: { title: '系统管理', icon: 'el-icon-setting' },
+    children: [
+      {
+        path: 'user',
+        name: 'User',
+        component: () => import('@/views/system/user'),
+        meta: { title: '用户管理', icon: 'el-icon-user-solid' }
+      },
+      {
+        path: 'role',
+        name: 'Role',
+        component: () => import('@/views/system/role'),
+        meta: { title: '角色管理', icon: 'el-icon-s-custom' }
+      }
+    ]
+  },
 
   {
     path: '/form',
