@@ -6,6 +6,23 @@ Vue.use(Router)
 /* Layout */
 import Layout from '@/layout'
 
+const FixedAsset = () => import('@/views/asset/FixedAsset')
+const Material = () => import('@/views/asset/material')
+const User = () => import('@/views/system/User')
+const Role = () => import('@/views/system/Role')
+const Department = () => import('@/views/system/Department')
+const Permission = () => import('@/views/website/Permission')
+const Module = () => import('@/views/website/Module')
+
+export const componentList = {
+  FixedAsset,
+  Material,
+  User,
+  Role,
+  Department,
+  Permission,
+  Module
+}
 /**
  * Note: sub-menu only appear when route children.length >= 1
  * Detail see: https://panjiachen.github.io/vue-element-admin-site/guide/essentials/router-and-nav.html
@@ -54,152 +71,96 @@ export const constantRoutes = [
       meta: { title: '控制台', icon: 'dashboard' }
     }]
   },
-  {
-    path: '/asset',
-    component: Layout,
-    redirect: '/asset/fixedasset',
-    name: 'Asset',
-    meta: { title: '资产管理', icon: 'el-icon-s-help' },
-    children: [
-      {
-        path: 'fixedasset',
-        name: 'FixedAsset',
-        component: () => import('@/views/asset/fixedasset'),
-        meta: { title: '固定资产', icon: 'table' }
-      },
-      {
-        path: 'material',
-        name: 'Material',
-        component: () => import('@/views/asset/material'),
-        meta: { title: '耗材', icon: 'tree' }
-      }
-    ]
-  },
-  {
-    path: '/example',
-    component: Layout,
-    redirect: '/example/table',
-    name: 'Example',
-    meta: { title: '示例', icon: 'el-icon-s-help' },
-    children: [
-      {
-        path: 'table',
-        name: 'Table',
-        component: () => import('@/views/table/index'),
-        meta: { title: '表格', icon: 'table' }
-      },
-      {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/tree/index'),
-        meta: { title: '树', icon: 'tree' }
-      }
-    ]
-  },
-  {
-    path: '/system',
-    component: Layout,
-    redirect: '/system/user',
-    name: 'System',
-    meta: { title: '系统管理', icon: 'el-icon-setting' },
-    children: [
-      {
-        path: 'user',
-        name: 'User',
-        component: () => import('@/views/system/user'),
-        meta: { title: '用户管理', icon: 'el-icon-user-solid' }
-      },
-      {
-        path: 'role',
-        name: 'Role',
-        component: () => import('@/views/system/role'),
-        meta: { title: '角色管理', icon: 'el-icon-s-custom' }
-      }
-    ]
-  },
 
-  {
-    path: '/form',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        name: 'Form',
-        component: () => import('@/views/form/index'),
-        meta: { title: '表单', icon: 'form' }
-      }
-    ]
-  },
 
-  {
-    path: '/nested',
-    component: Layout,
-    redirect: '/nested/menu1',
-    name: 'Nested',
-    meta: {
-      title: '嵌套',
-      icon: 'nested'
-    },
-    children: [
-      {
-        path: 'menu1',
-        component: () => import('@/views/nested/menu1/index'), // Parent router-view
-        name: 'Menu1',
-        meta: { title: 'Menu1' },
-        children: [
-          {
-            path: 'menu1-1',
-            component: () => import('@/views/nested/menu1/menu1-1'),
-            name: 'Menu1-1',
-            meta: { title: 'Menu1-1' }
-          },
-          {
-            path: 'menu1-2',
-            component: () => import('@/views/nested/menu1/menu1-2'),
-            name: 'Menu1-2',
-            meta: { title: 'Menu1-2' },
-            children: [
-              {
-                path: 'menu1-2-1',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
-                name: 'Menu1-2-1',
-                meta: { title: 'Menu1-2-1' }
-              },
-              {
-                path: 'menu1-2-2',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
-                name: 'Menu1-2-2',
-                meta: { title: 'Menu1-2-2' }
-              }
-            ]
-          },
-          {
-            path: 'menu1-3',
-            component: () => import('@/views/nested/menu1/menu1-3'),
-            name: 'Menu1-3',
-            meta: { title: 'Menu1-3' }
-          }
-        ]
-      },
-      {
-        path: 'menu2',
-        component: () => import('@/views/nested/menu2/index'),
-        name: 'Menu2',
-        meta: { title: 'menu2' }
-      }
-    ]
-  },
+  // 404 page must be placed at the end !!!
+  { path: '*', redirect: '/404', hidden: true }
+]
 
-  {
-    path: 'external-link',
-    component: Layout,
-    children: [
-      {
-        path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
-        meta: { title: '外链', icon: 'link' }
-      }
-    ]
-  },
+export const asyncRoutes = [
+  // {
+  //   path: '/permission',
+  //   component: Layout,
+  //   redirect: '/permission/page',
+  //   alwaysShow: true, // will always show the root menu
+  //   name: 'Permission',
+  //   meta: {
+  //     title: 'Permission',
+  //     icon: 'lock',
+  //     roles: ['admin', 'editor'] // you can set roles in root nav
+  //   },
+  // },
+  // {
+  //   path: '/asset',
+  //   component: Layout,
+  //   redirect: '/asset/fixedasset',
+  //   name: 'Asset',
+  //   meta: { title: '资产管理', icon: 'el-icon-s-help' },
+  //   children: [
+  //     {
+  //       path: 'fixedasset',
+  //       name: 'FixedAsset',
+  //       component: FixedAsset,
+  //       meta: { title: '固定资产', icon: 'table' }
+  //     },
+  //     {
+  //       path: 'material',
+  //       name: 'Material',
+  //       component: Material,
+  //       meta: { title: '耗材', icon: 'tree' }
+  //     }
+  //   ]
+  // },
+
+  // {
+  //   path: '/system',
+  //   component: Layout,
+  //   redirect: '/system/user',
+  //   name: 'System',
+  //   meta: { title: '系统管理', icon: 'el-icon-setting', roles: ['admin','editor'] },
+  //   children: [
+  //     {
+  //       path: 'user',
+  //       name: 'User',
+  //       component: User,
+  //       meta: { title: '用户管理', icon: 'el-icon-user-solid', roles: ['admin'] }
+  //     },
+  //     {
+  //       path: 'role',
+  //       name: 'Role',
+  //       component: Role,
+  //       meta: { title: '角色管理', icon: 'el-icon-s-custom' }
+  //     },
+  //     {
+  //       path: 'department',
+  //       name: 'Department',
+  //       component: Department,
+  //       meta: { title: '部门管理', icon: 'el-icon-s-custom' }
+  //     },
+  //   ]
+  // },
+
+  // {
+  //   path: '/website',
+  //   component: Layout,
+  //   redirect: '/website/permission',
+  //   name: 'Website',
+  //   meta: { title: '网站管理', icon: 'el-icon-eleme', roles: ['admin'] },
+  //   children: [
+  //     {
+  //       path: 'permission',
+  //       name: 'Permission',
+  //       component: Permission,
+  //       meta: { title: '权限管理', icon: 'el-icon-user-solid', roles: ['admin'] }
+  //     },
+  //     {
+  //       path: 'module',
+  //       name: 'Module',
+  //       component: Module,
+  //       meta: { title: '模块管理', icon: 'el-icon-s-custom' }
+  //     },
+  //   ]
+  // },
 
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }

@@ -22,12 +22,18 @@ export default {
     { required: true, message: '请输入责任人', trigger: 'blur' },
     { min: 2, max: 10, message: '长度在 2 到 10 个字符', trigger: 'blur' }
   ],
-  department: [
+  departmentId: [
     { required: true, message: '请选择单位', trigger: 'blur' },
   ],
   position: [
     { required: true, message: '请输入所在位置', trigger: 'blur' },
     { min: 2, max: 20, message: '长度在 2 到 20 个字符', trigger: 'blur' }
+  ],
+  scrap_year: [
+    { type: 'number', required: true, message: '请输入数字', trigger: 'change' }
+  ],
+  price: [
+    { type: 'number', required: true, message: '请输入数字', trigger: 'change' }
   ],
   buy_time: [
     { type: 'date', required: true, message: '请选择日期', trigger: 'change' }

@@ -1,5 +1,5 @@
-import rules from '@/common/rules/asset'
-import models from '@/common/model/asset'
+import rules from '@/common/rules/department'
+import models from '@/common/model/department'
 export const mixin = {
   props:{
     departmentList:{
@@ -11,10 +11,10 @@ export const mixin = {
   },
   data(){
     return {
-      statusList:['正常','维修','损坏','报废','丢失'],
+      entityList:[{label:'是',value:true},{label:'否',value:false}],
       form:{},
       formLabelWidth: '120px',
-      formItemWidth: {width:'230px'},
+      formItemWidth: {width:'300px'},
       rules,
       dialogLoading:false,
       models
@@ -23,7 +23,12 @@ export const mixin = {
   computed:{
     formItemData(){
      return  Object.keys(models).sort( (a,b) => models[a].order - models[b].order)
+    },
+    newDeptList(){
+      return [{id:'0',name:'戒毒局'},...this.departmentList]
+      // return this.departmentList.length ? this.departmentList : [{id:'0',name:'戒毒局'}]
     }
   },
+  
 }
 

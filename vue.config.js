@@ -80,6 +80,14 @@ module.exports = {
       })
       .end()
 
+    // PostCSS Loader
+    // config.module
+    //   .rule('postcss')
+    //   .test(/\.css$/)
+    //   .use('postcss-loader')
+    //   .loader('postcss-loader')
+    //   .end()
+
     config
       .when(process.env.NODE_ENV !== 'development',
         config => {

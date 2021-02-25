@@ -11,7 +11,7 @@
 import { mapGetters } from 'vuex'
 
 export default {
-  name: 'Role',
+  name: 'Permission',
   computed: {
     ...mapGetters([
       'permission_routes',
